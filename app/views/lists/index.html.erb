@@ -4,11 +4,12 @@
       <h1>All of the lists</h1>
       <ul>
         <% @lists.each do |list| %>
-        <li><%= list.title %> | <%= link_to "View", list_path(list.id) %></li>
+        <li><%= list.title %> | # tasks: <%= list.tasks.length %> | <%= link_to "View", list_path(list.id) %></li>
         <% end %>
       </ul>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
+      <h3>Create a new list:</h3>
       <%= render 'lists/indexform' %>
     </div>
   </div>
