@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show, :update, :destroy]
 
   def index
-    @list = List.find(params[:id])
+    @list = List.find(params[:list_id])
     @list.tasks
   end
 

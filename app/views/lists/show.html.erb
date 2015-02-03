@@ -1,31 +1,46 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <h1><%= @list.title %></h1>
       <div class="list-options">
         <%= form_for @list do |f| %>
           <%= f.check_box :complete %>
           <%= f.label :complete, ":complete"  %>
-          <br>
           <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
         <% end %>
       </div>
       <div class="list-tasks">
         <ul>
           <% @list.tasks.each do |task| %>
-            <%= form_for task do |f| %>
-              <div class="form-group">
-                <%= f.text_field :label %><br>
-                <%= f.label :complete, 'status:'  %>
-                <%= f.check_box :complete %>
-                <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
-              </div>
-            <% end %>
+          <li class="task-item">
+            <div class="col-md-3 task">
+              <%= form_for task do |f| %>
+                <div class="form-group">
+                  <%= f.text_field :label %><br>
+                  <%= f.label :complete, 'status:'  %>
+                  <%= f.check_box :complete %>
+                  <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-9 notes">
+              <% task.notes.each do |note| %>
+                <p><%= note.body %></p>
+              <% end %>
+              <p></p>
+              <%= form_for [task, task.notes.build] do |f| %>
+                <div class="form-group">
+                  <%= f.label :body, 'note:' %><br>
+                  <%= f.text_field :body %>
+                </div>
+              <% end %>
+            </div>
+          </li>
           <% end %>
         </ul>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
       <h2>Create a new task for the <%= @list.title %> list:</h2>
       <%= form_for [@list, @list.tasks.new] do |f| %>
         <div class="form-group">
