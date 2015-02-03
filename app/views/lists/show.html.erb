@@ -2,24 +2,28 @@
   <div class="row">
     <div class="col-md-4">
       <h1><%= @list.title %></h1>
-      <%= form_for @list do |f| %>
-        <%= f.check_box :complete %>
-        <%= f.label :complete, ":complete"  %>
-        <br>
-        <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
-      <% end %>
-      <ul>
-        <% @list.tasks.each do |task| %>
-          <%= form_for task do |f| %>
-            <div class="form-group">
-              <%= f.text_field :label %><br>
-              <%= f.label :complete, 'status:'  %>
-              <%= f.check_box :complete %>
-              <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
-            </div>
-          <% end %>
+      <div class="list-options">
+        <%= form_for @list do |f| %>
+          <%= f.check_box :complete %>
+          <%= f.label :complete, ":complete"  %>
+          <br>
+          <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
         <% end %>
-      </ul>
+      </div>
+      <div class="list-tasks">
+        <ul>
+          <% @list.tasks.each do |task| %>
+            <%= form_for task do |f| %>
+              <div class="form-group">
+                <%= f.text_field :label %><br>
+                <%= f.label :complete, 'status:'  %>
+                <%= f.check_box :complete %>
+                <%= f.submit :submit, class: 'btn btn-default btn-xs' %>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
     <div class="col-md-8">
       <h2>Create a new task for the <%= @list.title %> list:</h2>
