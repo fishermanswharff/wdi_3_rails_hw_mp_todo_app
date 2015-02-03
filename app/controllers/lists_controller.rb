@@ -26,7 +26,8 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to root_path
     else
-      render :new
+      redirect_to lists_path
+      flash[:alert] = "#{@list.errors.full_messages[0]}"
     end
   end
 
