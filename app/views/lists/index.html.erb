@@ -1,6 +1,8 @@
 <h1>All of the lists</h1>
 <ul>
   <% @lists.each do |list| %>
-  <li><%= list.title %> | <%= list.complete %></li>
+  <li><%= list.title %> | <%= link_to "View", list_path(list.id) %></li>
   <% end %>
 </ul>
+
+<%= render 'lists/form' %>
