@@ -1,0 +1,6 @@
+<h1>All of the lists</h1>
+<ul>
+  <% @lists.each do |list| %>
+  <li><%= list.title %> | <%= list.complete %></li>
+  <% end %>
+</ul>
