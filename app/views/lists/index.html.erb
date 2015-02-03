@@ -1,8 +1,15 @@
-<h1>All of the lists</h1>
-<ul>
-  <% @lists.each do |list| %>
-  <li><%= list.title %> | <%= link_to "View", list_path(list.id) %></li>
-  <% end %>
-</ul>
-
-<%= render 'lists/form' %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h1>All of the lists</h1>
+      <ul>
+        <% @lists.each do |list| %>
+        <li><%= list.title %> | <%= link_to "View", list_path(list.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= render 'lists/form' %>
+    </div>
+  </div>
+</div>
