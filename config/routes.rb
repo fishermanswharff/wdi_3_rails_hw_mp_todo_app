@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
   root 'lists#index'
-  resources :lists do
-    resources :tasks, only: [:index, :new, :create]
+  shallow do
+    resources :lists do
+      resources :tasks do
+        resources :notes
+      end
+    end
   end
 
-  resources :tasks, only: [:show, :edit, :update, :destroy]
+  # resources :tasks, only: [:show, :edit, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
